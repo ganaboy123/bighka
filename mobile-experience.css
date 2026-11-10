@@ -1,0 +1,41 @@
+/* Mobile navigation uses its own opaque viewport layer so page content cannot show through it. */
+html.nav-locked,body.nav-locked{overflow:hidden!important;overscroll-behavior:none}
+.menu-close{display:none}
+@media(max-width:1000px){
+  .site-header.menu-open{position:fixed!important;z-index:1200!important;inset:0;width:100%;height:100vh;height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:68px minmax(0,1fr);align-items:stretch;justify-content:initial;padding:0 clamp(22px,6vw,44px) 22px;overflow:hidden;background:var(--paper)!important;border:0;backdrop-filter:blur(24px);box-shadow:0 20px 70px rgba(12,10,25,.2)}
+  .site-header.menu-open>.brand-lockup{grid-column:1;grid-row:1;align-self:center;min-width:0}
+  .site-header.menu-open>.menu-toggle{display:none!important}
+  .site-header.menu-open>.menu-close{position:absolute;top:12px;right:clamp(22px,6vw,44px);z-index:1201;width:44px;height:44px;display:grid!important;place-items:center;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font:0/1 var(--body);cursor:pointer}
+  .site-header.menu-open>.menu-close::before{content:"×";font:300 26px/1 var(--body)}
+  .site-header.menu-open .main-nav{position:relative;inset:auto;grid-column:1/-1;grid-row:2;display:grid!important;grid-template-columns:minmax(0,1fr);align-content:start;align-items:stretch;gap:0;width:100%;height:100%;max-height:none;overflow-y:auto;overscroll-behavior:contain;padding:16px 0 64px;border:0;background:transparent!important;box-shadow:none}
+  .site-header.menu-open .main-nav{counter-reset:mobile-menu}
+  .site-header.menu-open .main-nav>a:not(.nav-cta){counter-increment:mobile-menu;display:grid;grid-template-columns:40px minmax(0,1fr) 22px;align-items:center;gap:10px;min-height:54px;padding:10px 3px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink)!important;opacity:1!important;text-align:left;font:500 clamp(18px,5vw,23px)/1.1 var(--display);letter-spacing:-.035em}
+  .site-header.menu-open .main-nav>a:not(.nav-cta)::before{content:counter(mobile-menu,decimal-leading-zero);font:8px var(--mono);letter-spacing:.1em;color:var(--violet)}
+  .site-header.menu-open .main-nav>a:not(.nav-cta)::after{content:"↗";justify-self:end;font:14px var(--body);color:var(--violet);opacity:.78}
+  .site-header.menu-open .main-nav>a.nav-cta{opacity:1!important}
+  .site-header.menu-open .main-nav .theme-toggle{width:44px;height:44px;margin:16px 0 8px;justify-self:start;border-color:var(--line);background:color-mix(in srgb,var(--paper) 88%,transparent);color:var(--ink)}
+  .site-header.menu-open .main-nav .nav-cta{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;min-height:54px;margin:14px 0 0;padding:15px 18px;border:0;border-radius:2px;background:var(--ink)!important;color:var(--paper)!important;font:600 13px var(--body);text-align:left}
+  .site-header.menu-open .main-nav .nav-cta span{color:var(--lime)!important}
+  .site-header.menu-open::after{content:"INDEPENDENT CREATIVE TECHNOLOGIST  /  ACCRA";position:absolute;left:clamp(22px,6vw,44px);bottom:11px;font:7px var(--mono);letter-spacing:.1em;color:var(--muted)}
+  .world-canvas{opacity:calc(var(--world-strength)*1.8)}
+}
+@media(max-width:680px){
+  .home-hero{gap:24px}
+  .hero-left{min-height:0;padding-bottom:0}
+  .hero-bottom{margin-top:4px;align-items:center}
+  .hero-visual{display:block;position:relative;flex:0 0 auto;width:100%;height:clamp(320px,105vw,480px);min-height:0;max-height:none;margin:0;overflow:hidden;border:1px solid rgba(175,150,255,.3);border-radius:2px 78px 2px 2px;background:radial-gradient(ellipse at 70% 35%,rgba(0,196,255,.5),transparent 38%),radial-gradient(ellipse at 40% 70%,rgba(204,46,147,.42),transparent 42%),linear-gradient(135deg,#080a16,#101127 56%,#071a29);box-shadow:0 24px 70px rgba(2,4,18,.34),0 0 44px rgba(104,75,206,.16);isolation:isolate}
+  .hero-photo{object-position:61% 45%;filter:saturate(1.12) contrast(1.08);animation:heroZoom 18s ease-in-out infinite alternate}
+  .hero-photo-shade{background:linear-gradient(180deg,rgba(8,8,15,.1),transparent 42%,rgba(8,8,15,.38)),linear-gradient(90deg,rgba(8,8,15,.22),transparent 74%)}
+  .hero-visual-top,.hero-visual-bottom{left:15px;right:15px;z-index:3;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.8)}
+  .hero-visual-top{top:16px}
+  .hero-visual-bottom{bottom:15px;gap:12px;font-size:7px}
+  .hero-orb{width:clamp(148px,42vw,205px);height:auto;aspect-ratio:1;top:49%;left:55%;translate:-50% -50%;font-size:27px;box-shadow:inset -18px -20px 28px rgba(34,12,102,.36),inset 7px 8px 25px rgba(255,255,255,.52),0 20px 70px rgba(58,33,179,.62),0 0 55px rgba(182,98,255,.34)}
+  .hero-sparkle{left:20%;top:25%;font-size:32px}
+  html[data-theme="light"]{--world-strength:.56}
+  html[data-theme="dark"]{--world-strength:.68}
+  html[data-theme="light"] .home-hero{background:linear-gradient(100deg,rgba(244,242,250,.8),rgba(244,242,250,.65) 57%,rgba(244,242,250,.35))}
+  html[data-theme="dark"] .home-hero{background:linear-gradient(100deg,rgba(9,10,19,.88),rgba(12,12,25,.69) 56%,rgba(22,15,34,.42))}
+  html[data-theme="light"] .intro-band,html[data-theme="light"] .featured-work,html[data-theme="light"] .home-lab,html[data-theme="light"] .about-statement,html[data-theme="light"] .about-end,html[data-theme="light"] .projects-feed,html[data-theme="light"] .lab-studies,html[data-theme="light"] .toolkit-map,html[data-theme="light"] .journey-track,html[data-theme="light"] .service-list,html[data-theme="light"] .experiment-notes,html[data-theme="light"] .contact-content{background:color-mix(in srgb,var(--paper) 78%,transparent)}
+  html[data-theme="dark"] .intro-band,html[data-theme="dark"] .featured-work,html[data-theme="dark"] .home-lab,html[data-theme="dark"] .about-statement,html[data-theme="dark"] .about-end,html[data-theme="dark"] .projects-feed,html[data-theme="dark"] .lab-studies,html[data-theme="dark"] .toolkit-map,html[data-theme="dark"] .journey-track,html[data-theme="dark"] .service-list,html[data-theme="dark"] .experiment-notes,html[data-theme="dark"] .contact-content{background:rgba(9,10,19,.72)}
+  html[data-theme="light"] .content-note,html[data-theme="light"] .hero-side-note,html[data-theme="light"] .project-caption>span,html[data-theme="light"] .case-meta,html[data-theme="light"] .study-caption>span,html[data-theme="light"] .journey-caption,html[data-theme="light"] .services-art>p{color:#575166}
+}
