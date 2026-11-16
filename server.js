@@ -2,7 +2,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const root = __dirname;
+const root = path.join(__dirname, 'dist');
+if (!fs.existsSync(path.join(root, 'index.html'))) {
+  console.error('Build the portfolio before starting it: npm run build');
+  process.exit(1);
+}
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mp4': 'video/mp4', '.webm': 'video/webm' };
 const server = http.createServer((request, response) => {
   const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);

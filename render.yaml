@@ -3,6 +3,6 @@ services:
     name: harrison-appiah-portfolio
     runtime: node
     plan: free
-    buildCommand: npm install
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /
