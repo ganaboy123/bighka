@@ -30,7 +30,11 @@ The Node server serves only `dist/`, supports video range requests, and uses
 Render's `PORT` environment variable (5173 locally). Rebuild after edits when
 using `npm.cmd start`, or use `npm.cmd run dev` for live updates.
 
-Render runs `npm ci --include=dev && npm run build` before `npm start`.
+The npm `prepare` lifecycle builds the portfolio during `npm install` and
+`npm ci`. This also supports existing Render services whose dashboard Build
+Command is still `npm install`. The build toolchain is installed even when
+development dependencies are omitted; only browser test tooling is optional.
+The Blueprint uses `npm ci --include=dev`, followed by `npm start`.
 
 After building, `npm.cmd test` checks the production portfolio and preview at
 desktop and mobile sizes. Install its browser once with
